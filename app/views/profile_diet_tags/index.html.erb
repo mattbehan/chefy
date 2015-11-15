@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Profile Diet Tags</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @profile_diet_tags.each do |profile_diet_tag| %>
+      <tr>
+        <td><%= link_to 'Show', profile_diet_tag %></td>
+        <td><%= link_to 'Edit', edit_profile_diet_tag_path(profile_diet_tag) %></td>
+        <td><%= link_to 'Destroy', profile_diet_tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Profile diet tag', new_profile_diet_tag_path %>
