@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+
+  resources :home, only: :index
+  root "home#index"
+
   resources :recipes_diet_tags
   resources :profile_diet_tags
   resources :chef_specialties
   resources :specialties
-  # can't remember how to write this route using ? parameters
-  # get "experiences/new(/:chef_id)" => "experiences"
+
   resources :experiences, except: [:index] do
     resources :reviews, except: [:index] do
       resources :comments, except: [:index, :show]

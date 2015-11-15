@@ -9,7 +9,7 @@ require "ffaker"
 
 10.times do 
 	chef = Chef.create(email: FFaker::Internet.email, password: "password")
-	profile = Profile.create(name: FFaker::Name.name, user_id: chef.id, user_type: "Chef")
+	profile = Profile.create(name: FFaker::Name.name, user_id: chef.id, user_type: "Chef", base_price: 25)
 
 end
 
