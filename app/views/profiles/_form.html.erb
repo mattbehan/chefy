@@ -1,0 +1,13 @@
+
+<%= form_for (@profile) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :gender %>
+  <%= f.text_field :gender %>
+
+  <%= f.label :bio %>
+  <%= f.text_area :bio %>
+
+  <p><%= f.submit %></p>
+<% end %>

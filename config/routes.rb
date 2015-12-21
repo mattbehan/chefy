@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
   end
   resources :reviews
+  resources :profiles, except: :index
   devise_for :foodies
   devise_for :chefs
   # The priority is based upon order of creation: first created -> highest priority.
