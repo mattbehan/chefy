@@ -12,9 +12,10 @@
   <% end %>
 
   <div class="actions">
-    <%= select("experience", "recipe", @recipes, {include_blank: true}) %>
-    <%= select("experience", "chef", @chefs, {include_blank: true}) %>
+    <%= select("experience", "recipe", @recipes, {include_blank: true}, :class => "browser-default") %>
+    <%= select("experience", "chef", @chefs, {include_blank: true}, :class => "browser-default") %>
+    <input name="experience[starts_at]"type="date" class="datepicker">
 
-    <%= f.submit %>
+    <%= f.submit "Book It", :class => "waves-effect waves-light btn"%>
   </div>
 <% end %>

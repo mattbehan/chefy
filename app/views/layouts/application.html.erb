@@ -2,11 +2,53 @@
 <html>
 <head>
   <title>Chefy</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <%= stylesheet_link_tag    'application', "http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css", media: "all" %>
+  <%= javascript_include_tag 'application', "http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js" %>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo"><i>Chefy</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li> <%= link_to "Home", root_path %></li>
+        <%if current_foody %>
+        <ul id="dropdown1" class="dropdown-content">
+          <% if current_foody.profile %>
+            <li> <%=link_to "View profile", profile_path(current_user.profile)%></li>
+          <% else %>
+            <li> <%= link_to "Create profile", new_profile_path%> </li>
+          <% end %>
+          <li> <%= link_to "Edit account information", edit_foody_registration_path %> </li>
+          <li> <%= link_to "Edit profile information" %> </li>
+        	<li> <%= link_to("Logout", destroy_foody_session_path, method: "delete")%></li>
+        </ul>
+        <li> <%=link_to "Book dining", new_experience_path %> </li>
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">My account<i class="material-icons right">arrow_drop_down</i></a></li>
+    	<% elsif current_chef %>
+    	<li> <%=link_to "View profile", "#"%></li>
+    	<% else %>
+    	<li><%= link_to("Sign in as a chef", new_chef_session_path) %></li>
+    	<li><%= link_to("Sign in as a foody", new_foody_session_path)%></li>
+    	<li><%= link_to("Sign up as a chef", new_chef_registration_path) %></li>
+    	<li><%= link_to("Sign up as a foody", new_foody_registration_path)%></li>
+    	</li>
+    	<% end %>
+      </ul>
+    </div>
+  </nav>
+        
+
 
 <%= yield %>
 

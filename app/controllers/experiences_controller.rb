@@ -26,7 +26,10 @@ class ExperiencesController < ApplicationController
   # POST /experiences
   # POST /experiences.json
   def create
-    @experience = Experience.new(experience_params)
+    @chef_id = Profile.find_by(name: experience_params[:chef], user_type: "Chef").user.id
+    @recipe_id = Recipe.find_by(name: experience_params[:recipe]).id
+    @experience = Experience.new(chef_id: @chef_id, recipe_id: @recipe_id, foody_id: current_foody.id, cost: Pricing.calculate(@recipe_id, @chef_id), status: "upcoming", starts_at: experience_params[:starts_at] )
+
 
     respond_to do |format|
       if @experience.save
@@ -71,6 +74,6 @@ class ExperiencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def experience_params
-      params[:experience]
+       params.require(:experience).permit(:chef, :recipe, :starts_at)
     end
 end
